@@ -3,8 +3,8 @@ const govAlphaAddr = "0xAcA2E6C7C4fE4346711677e993AB6F7E025EAcAF";
 const characterAddr = "0xa9961a6bbc7af4ba72a93a268986dd414d3e36ee";
 
 async function main() {
-  const [addr1] = ethers.provider.listAccounts();
-  const token = await ethers.getContractAt("Token", tokenAddr);
+  const [addr1] = await ethers.provider.listAccounts();
+  const token = await ethers.getContractAt("Sonic", tokenAddr);
   const tx = await token.delegate(addr1);
   await tx.wait();
 
@@ -14,8 +14,8 @@ async function main() {
   const signatures = [""];
   const calldatas = [character.interface.encodeFunctionData("changeName", ["Sanic"])];
   const govAlpha = await ethers.getContractAt("GovernorAlpha", govAlphaAddr);
-  const tx = await govAlpha.propose(targets, values, signatures, calldatas, "Change Sonics Name")
-  const receipt = await tx.wait();
+  const tx1 = await govAlpha.propose(targets, values, signatures, calldatas, "Change Sonics Name")
+  const receipt = await tx1.wait();
   proposalId = receipt.events.find(x => x.event === "ProposalCreated").args.id;
 
   console.log(`Proposal ${proposalId} created!`);
