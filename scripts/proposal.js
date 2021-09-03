@@ -1,6 +1,6 @@
-const tokenAddr = "";
-const govAlphaAddr = "";
-const characterAddr = "";
+const tokenAddr = "0xeDBc990B877d0E552b0046988C4ef9174ad75018";
+const govAlphaAddr = "0xAcA2E6C7C4fE4346711677e993AB6F7E025EAcAF";
+const characterAddr = "0xa9961a6bbc7af4ba72a93a268986dd414d3e36ee";
 
 async function main() {
   const [addr1] = ethers.provider.listAccounts();

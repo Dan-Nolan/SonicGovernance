@@ -1,12 +1,9 @@
-const govAlphaAddr = "";
+const govAlphaAddr = "0xAcA2E6C7C4fE4346711677e993AB6F7E025EAcAF";
 
-async function execute() {
+async function main() {
   const govAlpha = await ethers.getContractAt("GovernorAlpha", govAlphaAddr);
   const proposalId = 1;
-  const tx = await govAlpha.queue(proposalId);
-  await tx.wait();
-
-  await govAlpha.execute(proposalId);
+  await govAlpha.castVote(proposalId, true);
 }
 
 // We recommend this pattern to be able to use async/await everywhere
